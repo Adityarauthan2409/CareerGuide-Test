@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/css/login.css}">
+
+	
+</head>
+<body>
+
+	<!-- Create Login page -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				
+				<form th:action="@{/login}" method="post" th:object="${user}">
+
+					<h3>Sign In!</h3>
+
+
+					<!-- Google Sign In Button -->
+					
+					<button class="loginBtn loginBtn--google">
+						Google
+					  </button>
+
+
+
+					<!-- error message -->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or password</div>
+					</div>
+
+					<!-- Logout message -->
+					<div th:if="${param.Logout}">
+						<div class="alert alert-info">You have bee logged out</div>
+					</div>
+
+					<div class="form-group">
+						<input id="username" type="text" class="form-control" name="username"
+							placeholder="Email" autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<input id="password" type="password" class="form-control" name="password"
+							placeholder="Password" autofocus="autofocus">
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="button">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="log In">
+							</div>
+						</div>
+
+						<div class="fp">
+							<a href="/" th:href="@{/#}">Forgot Your Password?</a>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<a href="/" th:href="@{/registration}">Don't Have An Account Yet!</a>
+						<button class="sign">SIGNUP!</button>
+					</div>
+
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
